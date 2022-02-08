@@ -10,6 +10,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +30,7 @@ public class ProductoController {
     		 @RequestParam("id") String idProducto,
     		 Model model) {
         
-        Producto p = null;
+        Producto p = productoService.getProductoPorId(idProducto);
         model.addAttribute("producto", p);
 
         return "producto";
@@ -37,15 +38,26 @@ public class ProductoController {
      
      
      //  lista de categorias por categoría 
-     //   /productos/{categoria}
+     //  /productos/{categoria}
      //  /productos/Smart+Phone
      @RequestMapping("/productos/{categoria}")
      public String productosPorCategoria(
              @PathVariable("categoria") String categoriaProducto,
     		 Model model) {
     	 
-    	 Collection<Producto> lista = null;
+    	 Collection<Producto> lista = productoService.getProductosPorCategoria(categoriaProducto);
     	 model.addAttribute("productos", lista);
+    	 return "productos";
+     }
+     
+     // productos/tablet/Apple
+     @GetMapping("/productos/{categoria}/{fabricante}")
+     public String getProductosPorCategoriaYColor(
+    		 @PathVariable("categoria") String categoriaProducto,
+    		 @PathVariable("fabricante") String fabricante,
+    		 Model model
+    		 ) {
+    	 //falta llamar a la capa de negogio y pasar model
     	 return "productos";
      }
      
