@@ -1,19 +1,28 @@
 package com.curso.controller;
 import com.curso.domain.Producto;
 import com.curso.domain.repository.ProductoRepository;
+import com.curso.excepciones.ProductosException;
 import com.curso.service.ComprasService;
 import com.curso.service.ProductoService;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProductoController {
@@ -61,11 +70,8 @@ public class ProductoController {
     	 return "productos";
      }
      
-     
-     
      @RequestMapping("/productos")
      public String list(Model model) {
-
         model.addAttribute("productos", 
                 productoService.getTodosProductos());
 
@@ -90,6 +96,61 @@ public class ProductoController {
     public ProductoController() {
         System.out.println("... iniciando ProductController");
     }
+    
+    
+    // MOSTAR EL FORMULARIO   - GET
+    @GetMapping("/productos/nuevo")
+    public String getCrearNuevoProductoFormulario(Model model) {     
+    	Producto nuevoProducto = new Producto(); 
+    	nuevoProducto.setNombre("Nuevo");
+    	model.addAttribute("nuevoProducto", nuevoProducto); 
+    	return "crear-producto"; 
+    } 
+    
+    
+    // PROCESAR LOS DATOS DEL FORMULARIO  - POST
+    @PostMapping("/productos/nuevo")
+    public String crearNuevoProductoFormulario(
+    		@ModelAttribute("nuevoProducto")  Producto nuevoProducto,
+    		Model model ) throws ProductosException {
+    	//falta validar
+    	
+    	//try {
+			productoService.crearProducto(nuevoProducto);
+			return "redirect:/productos"; 
+//		} catch (ProductosException e) {
+//			
+//			model.addAttribute("error", e.getClaveMensaje());
+//			model.addAttribute("nuevoProducto", nuevoProducto); 
+//	    	return "crear-producto"; 
+//			
+//		}
+
+    }
+    
+    
+    
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleException( Exception exception) {
+        
+         ModelAndView mav = new ModelAndView();
+        if(exception instanceof ProductosException){
+            mav.addObject("arg0","Error Producto");
+            mav.addObject("claveMensage",((ProductosException)exception).getClaveMensaje());
+        
+        }else{
+             
+             mav.addObject("arg0",exception.getMessage());
+             mav.addObject("claveMensage","error.inexperado");
+             Logger.getAnonymousLogger().severe(exception.getMessage());
+        }
+        mav.setViewName("producto-exception");
+        return mav;
+    }
+    
+    
+    
+    
   
     
 }

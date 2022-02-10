@@ -52,10 +52,10 @@ public class EnMemoriaProductoRepository implements ProductoRepository {
             }
         }
 
-        if (productoProId == null) {
-            throw new IllegalArgumentException("No se ha encontrado un "
-                    + "productos con el id: " + idProducto);
-        }
+//        if (productoProId == null) {
+//            throw new IllegalArgumentException("No se ha encontrado un "
+//                    + "productos con el id: " + idProducto);
+//        }
 
         return productoProId;
     }
@@ -78,5 +78,13 @@ public class EnMemoriaProductoRepository implements ProductoRepository {
         return productosEncontrados;
     }
 
+    
+    @Override
+    public void add(Producto producto) {
+    	
+    	//pendiente validar que no existe ya
+    	
+    	this.listaDeProductos.add(producto);
+    }
 
 }

@@ -1,6 +1,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,21 +28,36 @@
                             <div class="caption">
                                 <h3>${producto.nombre}</h3>
                                 <p>${producto.descripcion}</p>
-                                <p>${producto.precionUnitario} €</p>
+                                <p>${producto.precioUnitario} €</p>
                                 <p>Hay  ${producto.unidadesEnStock} unidades in stock</p>
                                 
                                 <p>
                                 <a class="btn btn-primary" 
                                    href="comprar?id=${producto.idProducto}" 
                                    role="button">Comprar 1 unidad</a>
-                                </p>
-                                
+                                </p>    
                                 
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
+             
+             
+             <div class="row">
+                 <a class="btn btn-primary" 
+                    href="productos/nuevo" 
+                    role="button">NUEVO</a>
+                      
+                    <a class="btn btn-primary" 
+                    href="<c:url value="/productos/nuevo" />" 
+                    role="button">NUEVO</a>
+         
+             </div>
+             
+              
+             
+             
         </section>
     </body>
 </html>
