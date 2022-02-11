@@ -100,7 +100,6 @@ public class ProductoController {
     @GetMapping("/productos/nuevo")
     public String getCrearNuevoProductoFormulario(Model model) {     
     	Producto nuevoProducto = new Producto(); 
-    	nuevoProducto.setNombre("Nuevo");
     	model.addAttribute("nuevoProducto", nuevoProducto); 
     	return "crear-producto"; 
     } 
@@ -110,7 +109,6 @@ public class ProductoController {
     @PostMapping("/productos/nuevo")
     public String crearNuevoProductoFormulario(
     		@ModelAttribute("nuevoProducto") @Valid Producto nuevoProducto,
-    		Model model,
     		BindingResult bindingResult) throws ProductosException {
     	
     	//falta validar
