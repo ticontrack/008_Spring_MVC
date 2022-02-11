@@ -1,15 +1,11 @@
 package com.curso.controller;
 import com.curso.domain.Producto;
-import com.curso.domain.repository.ProductoRepository;
 import com.curso.excepciones.ProductosException;
 import com.curso.service.ComprasService;
 import com.curso.service.ProductoService;
 
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.logging.Logger;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
