@@ -18,6 +18,7 @@ public class Producto implements Serializable {
     
     @Size(max=200)
     private String nombre;
+    
     private BigDecimal precionUnitario;
     private String descripcion;
     private String fabricante;

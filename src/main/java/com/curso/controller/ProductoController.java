@@ -7,9 +7,12 @@ import com.curso.service.ProductoService;
 import java.util.Collection;
 import java.util.logging.Logger;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -106,9 +109,15 @@ public class ProductoController {
     // PROCESAR LOS DATOS DEL FORMULARIO  - POST
     @PostMapping("/productos/nuevo")
     public String crearNuevoProductoFormulario(
-    		@ModelAttribute("nuevoProducto")  Producto nuevoProducto,
-    		Model model ) throws ProductosException {
+    		@ModelAttribute("nuevoProducto") @Valid Producto nuevoProducto,
+    		Model model,
+    		BindingResult bindingResult) throws ProductosException {
+    	
     	//falta validar
+    	if(bindingResult.hasErrors()) {
+    		//vamos otra vez al formulario
+    		return "crear-producto";
+    	}
     	
     	//try {
 			productoService.crearProducto(nuevoProducto);
