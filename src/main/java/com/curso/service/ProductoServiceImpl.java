@@ -6,13 +6,21 @@ import com.curso.domain.repository.ProductoRepository;
 import com.curso.excepciones.ProductosException;
 
 import java.util.List;
-import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class ProductoServiceImpl implements ProductoService {
-     @Autowired
+  
+	
+	
+	@Autowired
+	@Qualifier("JPAProductoRepository")
     private ProductoRepository productoRepositorio;
  
     @Override

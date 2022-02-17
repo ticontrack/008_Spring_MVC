@@ -4,14 +4,23 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
+@Entity
+@Table(name="PRODUCTOS")
+@NamedQueries({
+    @NamedQuery(name = "Producto.findAll", 
+    		    query = "SELECT p FROM Producto p"),
+    @NamedQuery(name = "Producto.findByCategoria", 
+    		query = "SELECT p FROM Producto p WHERE p.categoria = :categoria")
+})
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     @NotNull
     @Size(min = 5)
     private String idProducto;
@@ -19,6 +28,7 @@ public class Producto implements Serializable {
     @Size(max=200)
     private String nombre;
     
+    @Column(name="precionUnitario")
     private BigDecimal precionUnitario;
     private String descripcion;
     private String fabricante;

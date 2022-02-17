@@ -1,0 +1,12 @@
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/config/MvcConfiguration.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/controller/HomeController.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/domain/Producto.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/service/ProductoService.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/controller/ProductoController.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/service/ComprasService.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/service/ProductoServiceImpl.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/domain/repository/JPAProductoRepository.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/service/ComprasServiceImpl.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/domain/repository/ProductoRepository.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/excepciones/ProductosException.java
+/Users/begonaolea/documentos_mac/0001_PROYECTOS_JAVASE/008_Spring_MVC/src/main/java/com/curso/domain/repository/EnMemoriaProductoRepository.java
